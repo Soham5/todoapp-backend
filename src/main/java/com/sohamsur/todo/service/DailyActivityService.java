@@ -31,6 +31,11 @@ public class DailyActivityService {
         return dailyItemList;
     }
 
+    /***
+     * Delete daily task
+     * @param index
+     * @return
+     */
     public List<DailyItem> deleteToDoList(int index) {
         dailyItemList.remove(index);
 
