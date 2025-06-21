@@ -23,18 +23,27 @@ pool:
 #   goals: 'package'
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    goals: 'package'
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '17'
+      jdkArchitecture: 'x64'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'backend/pom.xml'
+      goals: 'clean package -DskipTests'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+    displayName: 'Build Spring Boot'
+
+  - script: |
+      mkdir staging
+      cp target/*.jar staging/app.jar
+      ls
+    displayName: 'Prepare Deployment Artifact'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'staging'
+      artifactName: '$(artifactName)'
+  
