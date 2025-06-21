@@ -30,7 +30,7 @@ steps:
 
   - task: Maven@3
     inputs:
-      mavenPomFile: 'todoapp-backend/pom.xml'
+      mavenPomFile: 'pom.xml'
       goals: 'clean package -DskipTests'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
