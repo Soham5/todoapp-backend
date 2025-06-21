@@ -23,14 +23,14 @@ pool:
 #   goals: 'package'
 
 steps:
-  - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '17'
-      jdkArchitecture: 'x64'
+  # - task: JavaToolInstaller@0
+  #   inputs:
+  #     versionSpec: '17'
+  #     jdkArchitecture: 'x64'
 
   - task: Maven@3
     inputs:
-      mavenPomFile: 'backend/pom.xml'
+      mavenPomFile: 'todoapp-backend/pom.xml'
       goals: 'clean package -DskipTests'
       javaHomeOption: 'JDKVersion'
       jdkVersionOption: '1.17'
