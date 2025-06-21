@@ -38,7 +38,7 @@ steps:
 
   - script: |
       mkdir staging
-      cp target/*.jar staging/app.jar
+      cp target/*.jar staging/backend/app.jar
       ls
     displayName: 'Prepare Deployment Artifact'
 
