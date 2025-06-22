@@ -39,16 +39,6 @@ steps:
   - script: |
       mkdir -p staging/backend
       cp target/*.jar staging/backend/
-      echo "---target folder---"
-      cd target/
-      ls
-      cd ../
-      echo "---staging folder---"
-      cd staging/
-      ls
-      echo "---staging/backend folder---"
-      cd backend/
-      ls
     displayName: 'Prepare Deployment Artifact'
 
   - task: PublishBuildArtifacts@1
