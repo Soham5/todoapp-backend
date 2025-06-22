@@ -37,16 +37,16 @@ steps:
     displayName: 'Build Spring Boot'
 
   - script: |
-      mkdir staging
-      cp target/*.jar staging/backend/*.jar
-      echo "target folder"
+      mkdir -p staging/backend
+      cp target/*.jar staging/backend/
+      echo "---target folder---"
       cd target/
       ls
       cd ../
-      echo "staging folder"
+      echo "---staging folder---"
       cd staging/
       ls
-      echo "staging/backend folder"
+      echo "---staging/backend folder---"
       cd backend/
       ls
     displayName: 'Prepare Deployment Artifact'
